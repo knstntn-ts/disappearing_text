@@ -1,21 +1,29 @@
+##### IMPORT STATEMENTS
 from tkinter import *
 
+##### CONSTANTS AND VARIABLES
 BACKGROUND_COLOR = "#53BF9D"
 DANGER_COLORS = ['#F94C66', '#BD4291', '#FFC54D', "white", "white"]
 timer_id = None
 
-
+# Main function
 def start_writing():
 
+    # Event function to start the countdown once a key is released
     def danger_counter():
         start_danger_counter()
 
+    # Countdown mechanism
     def start_danger_counter(counter=5):
+        # Here it is important to first check if there is an existing counter, only then to initiate another one.
+        # Otherwise, there will be many counters initialized and running at the same time.
         global timer_id
 
+        # With each new initialization, make sure to delete alreayd existing timer
         if timer_id is not None:
             window.after_cancel(timer_id)
 
+        # Countdown and change the background color once it is approaching 0
         if counter > 0:
             timer_id = window.after(1000, start_danger_counter, counter - 1)
             timer_display.configure(text='Danger Counter\n'+str(counter))
@@ -24,6 +32,7 @@ def start_writing():
             input_text_field.delete('1.0', 'end')
             timer_display.configure(text="Sorry, but you waited for too long.")
 
+    # --- Writing space --- #
     canvas.destroy()
     load_image_but.destroy()
     instruction_text_label = Label(window, text="Let your fantasy unfold in the field below",
