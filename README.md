@@ -1,4 +1,4 @@
-# disappearing_text
+# App to help improve your writing!
 Keep the typing going or the text will disappear!
 
 There are people who want to improve their writing skills. And one helfpul exercise is to write continuously on a random topic.
